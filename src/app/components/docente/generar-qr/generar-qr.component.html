@@ -1,0 +1,19 @@
+<div class="paddings-div">
+    <div class="container p-5 border shadowins bg-light">
+        <div class="row">
+            <div class="col-md-7">
+                <h1 class="text-center"><strong>{{qrData.materia}}</strong></h1><br><br><br>
+                <h4 class="text-left margin-text font">Profesor: <strong>{{qrData.nombre}} {{qrData.ap1}} {{qrData.ap2}}</strong></h4>
+                <h4 class="text-left margin-text font">Grado y Grupo: <strong>{{qrData.grupo}}</strong></h4>
+                <h4 class="text-left margin-text font">Horario: <strong>{{qrData.horaInicio}} - {{qrData.horaFin}}</strong></h4>
+                <h4 class="text-left margin-text font">Fecha: {{qrData.fecha}}</h4>
+            </div>
+            <div class="col-md-4">
+                <p class="alert-success genqr">QR Generado</p>
+                <div class="col-md-3 bg-light ml-4">
+                    <div class="margin-qr"><qrcode [qrdata]="QRdata" [width]="356" [errorCorrectionLevel]="'M'"></qrcode></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

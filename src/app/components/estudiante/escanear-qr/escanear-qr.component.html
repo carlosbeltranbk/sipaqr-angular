@@ -1,0 +1,13 @@
+<div class="container">
+    <div *ngIf="!correcto" class="card">
+        <div class="card-body">
+            <p class="text-secondary text-center h5">Para pasar lista, solo escanea el codigo QR que te proporcione tu profesor</p>
+        </div>
+    </div>
+    <div *ngIf="correcto">
+        <div class="alert alert-success text-center" role="alert">
+            Ya has pasado lista
+        </div>
+    </div>
+    <zxing-scanner *ngIf="mostrar" (scanSuccess)="enviarDatos($event)" class="m-5"></zxing-scanner>
+</div>

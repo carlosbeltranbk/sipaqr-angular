@@ -1,0 +1,72 @@
+<div class="container mt-5">
+    <h1 class="text-left mb-4">Días Feriados</h1>
+    <div class="row">
+        <div class="col-md-5">
+            <div class="container shadow p-5 text-center">
+                <h3>Nuevo registro</h3>
+                <div class="row">
+                    <div class="col-md-12">
+                        <mat-form-field class="inputs">
+                            <mat-label>Selecciona una fecha</mat-label>
+                            <input matInput [(ngModel)]="diaFeriado.fecha" 
+                            name="fecha" 
+                            [matDatepicker]="picker" 
+                            [matDatepickerFilter]="dateFilter"
+                            [min] = "minDate"
+                            [max] = "maxDate"
+                            [formControl]="fecha"
+                            >
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                            
+                            <mat-error *ngIf="fecha.hasError('required')">
+                                Campo <strong>requerido</strong><br>
+                            </mat-error>
+                        </mat-form-field>
+                        
+                        <mat-form-field class="inputs">
+                            <mat-label>Razón</mat-label>
+                            <input matInput [(ngModel)]="diaFeriado.razon" 
+                            [formControl]="razonInput"
+                            [errorStateMatcher]="matcher"
+                            name="razon" 
+                            placeholder="Día de la Independencia"
+                            value="">
+
+                            <mat-error *ngIf="razonInput.hasError('required')">
+                              Campo <strong>requerido</strong><br>
+                            </mat-error>
+                            <mat-error *ngIf="razonInput.hasError('minlength')">
+                                Ingresa al menos 10 caracteres de longitud.
+                            </mat-error>
+                        </mat-form-field>
+                        <button class="btn btn-blue btn-block mt-3" (click)="sendData()">{{boton}}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-7 text-center">
+            <table class="table table-striped shadow">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Día</th>
+                        <th scope="col">Razón</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let dia of diasFeriados; let i = index">
+                        <td scope="row">{{i + 1}}</td>
+                        <td>{{dia.fecha}}</td>
+                        <td>{{dia.razon}}</td>
+                        <td>
+                            <button class="btn btn-outline-primary mr-1" (click)="getDia(dia.id)">Editar</button>
+                            <button class="btn btn-outline-danger" (click)="borrar(dia)">Eliminar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

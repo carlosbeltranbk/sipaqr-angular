@@ -1,0 +1,25 @@
+.inputs {
+    width: 100%;
+}
+
+.btn-blue {
+    background-color: #345177;
+    color: white;
+}
+
+.btn-blue:hover {
+    background-color: white;
+    color: #345177;
+    border: solid 1px #345177;
+}
+
+.table-wrapper {
+    max-height: 500px;
+    overflow: scroll;
+    display: inline-block;
+}
+
+
+/* .mat-select-value {
+    color: red !important;
+} */

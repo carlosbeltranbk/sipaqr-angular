@@ -1,0 +1,78 @@
+
+.example-container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.example-is-mobile .example-toolbar {
+    position: fixed;
+    /* Asegúrese de que la barra de herramientas permanecerá en la parte 
+    superior del contenido a medida que avanza. */
+    z-index: 2;
+    
+}
+
+h1.example-app-name {
+    margin-left: 8px;
+    color: white;
+}
+
+.example-sidenav-container {
+    /* Cuando el sidenav no esté fijo, estire el contenedor sidenav para 
+    llenar el espacio disponible. Estahace que <<mat-sidenav-content> `actúe 
+    como nuestro elemento de desplazamiento para los diseños de escritorio. */
+    flex: 1;
+}
+
+.example-is-mobile .example-sidenav-container {
+    /* Cuando el sidenav es fijo, no limite la altura del contenedor sidenav. Esto permite el
+        `<body>` será nuestro elemento de desplazamiento para diseños móviles. */
+    flex: 1 0 auto;
+}
+
+.verde-sisa {
+    background-color: #019979;
+    width: 200px;
+}
+
+.azul-sisa {
+    background-color: #345177;
+
+}
+
+.font-white {
+    color: white;
+}
+
+mat-sidenav{
+    width: 30%;
+    margin-right: 200px;
+}
+
+.icono{
+    margin-right: 10px;
+}
+
+.menunav{
+    font-size: 125%;
+}
+
+.shadowins {
+	box-shadow: 0 .5rem 1rem rgba(0, 47, 150, 0.8) !important;
+}
+
+.utezimg{
+    align-content: center;
+}   
+
+.mat-list-item{
+    height: 58px !important;
+}
+.mat-list-item.logo {
+    height: 80px !important;
+}

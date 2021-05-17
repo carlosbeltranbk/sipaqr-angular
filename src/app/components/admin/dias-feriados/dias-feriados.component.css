@@ -1,0 +1,14 @@
+.inputs {
+    width: 100%;
+}
+
+.btn-blue {
+    background-color: #345177;
+    color: white;
+}
+
+.btn-blue:hover {
+    background-color: white;
+    color: #345177;
+    border: solid 1px #345177;
+}

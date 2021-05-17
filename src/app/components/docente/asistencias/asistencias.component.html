@@ -1,0 +1,81 @@
+<div class="container mt-5">
+    <h1 class="text-left mb-4">Asistencias</h1>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="container shadow p-5 text-center">
+                <h3>Listas</h3>
+                <div class="row">
+                    <div class="col-md-12">
+                        <mat-form-field class="inputs">
+                            <mat-label>Elije una fecha</mat-label>
+                            <input [(ngModel)]="listasModel.fecha" matInput 
+                            [matDatepicker]="picker" 
+                            [matDatepickerFilter]="dateFilter"
+                            [max] = "maxDate"
+                            [formControl]="fechaAsistencia"
+                            >
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                            <mat-error *ngIf="fechaAsistencia.hasError('required')">
+                                Campo <strong>requerido</strong><br>
+                            </mat-error>
+
+                        </mat-form-field>
+                        <mat-form-field class="inputs">
+                            <mat-label>Grupo</mat-label>
+                            <mat-select [(ngModel)]="nombreCarrera" [formControl]="grupoAsignado">
+                                <mat-option (change)="valor" [value]="grupo.nombre + '-' + grupo.nombreCarrera + '-' + grupo.idGrupo + '-' + grupo.Materia + '-' + grupo.alias " *ngFor="let grupo of grupos">{{ grupo.nombre }} {{grupo.alias}} {{grupo.Materia}}</mat-option>
+                            </mat-select>
+
+                            <mat-error *ngIf="grupoAsignado.hasError('required')">
+                                Campo <strong>requerido</strong><br>
+                            </mat-error>
+
+                        </mat-form-field>
+                    </div>
+                    <button class="btn btn-blue btn-block" (click)="validacionConsultar()"> Consultar</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 text-center">
+            <div class="alert alert-danger" role="alert" *ngIf="showFail">
+                {{msjFail}}
+            </div>
+            <div class="container container-listas shadow p-5" *ngIf="mostrar">
+                <h3 class="text-center">{{listasModel.nombre}} {{alias}} {{materia}}</h3>
+                <div class="table-wrapper">
+                    <table class="table table-striped table-responsive shadow">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Estudiante</th>
+                                <th scope="col">Hora</th>
+                                <th scope="col">Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let alumno of alumnos; let i=index">
+                                <th scope="row">{{i+1}}</th>
+                                <td class="text-left"> {{alumno.apellido1}} {{alumno.apellido2}} {{alumno.nombre}}</td>
+                                <td>{{alumno.horaDeAsistencia}}</td>
+                                <td>
+                                    <mat-form-field>
+                                        <!-- <mat-label>Estado</mat-label> -->
+                                        <mat-select class="rojo" [value]="alumno.estado" (selectionChange)="justificar($event, alumno.idAsistencia)">
+                                            <mat-option [value]="option.value" *ngFor="let option of status">{{ option.viewValue }}</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <button class="btn btn-blue btn-block" (click)="crearReporte(idMateria, listasModel.nombre, nombreCarrera)"> Exportar Reporte</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

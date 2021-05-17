@@ -1,0 +1,47 @@
+<div *ngIf="this._constant.rol != false" class="example-container" [class.example-is-mobile]="mobileQuery.matches">
+    <mat-toolbar class="example-toolbar azul-sisa">
+          <nav class="navbar">
+            <div class="container-3">
+                <button mat-button (click)="snav.toggle()" class="mdc-button mdc-button--raised menunav">
+                    <div class="mdc-button__ripple"></div>
+                    <i class="material-icons mdc-button__icon menunav  font-white" aria-hidden="true">menu_open</i>
+                    <span class="mdc-button__label font-white">SIPAQR</span>
+                </button>
+            </div>
+        </nav>
+    </mat-toolbar>
+
+    <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+        <mat-sidenav class="verde-sisa" #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+            <mat-nav-list>
+                <a class="bg-light logo" mat-list-item > 
+                    <img class="ml-3" src="https://upload.wikimedia.org/wikipedia/commons/5/54/Logo-utez.png" width="150" height="80">
+                </a>
+                <a  *ngIf="this._constant.rol!='Administrador'"class="font-white" mat-list-item routerLink=""> 
+                    <mat-icon class="icono">perm_identity</mat-icon>{{_constant.nombre}} {{_constant.ap1}} {{_constant.ap2}}
+                </a>
+                <a  *ngIf="this._constant.rol==='Administrador'"class="font-white" mat-list-item routerLink=""> 
+                    <mat-icon class="icono">perm_identity</mat-icon>Administrador
+                </a>
+                <a *ngIf="this._constant.rol==='Docente'" class="font-white" mat-list-item routerLink="asistencias"> 
+                    <mat-icon class="icono">storage</mat-icon>Ver listas
+                </a>
+                <a *ngIf="this._constant.rol==='Docente'" class="font-white" mat-list-item routerLink="generarQR"> 
+                    <mat-icon class="icono">format_shapes</mat-icon>Generar QR
+                </a>
+                <a *ngIf="this._constant.rol==='Alumno'" class="font-white" mat-list-item routerLink="escanearQR"> 
+                    <mat-icon class="icono">camera</mat-icon>Escanear QR
+                </a>
+                <a *ngIf="this._constant.rol==='Administrador'" class="font-white" mat-list-item routerLink="diasFeriados"> 
+                    <mat-icon class="icono">today</mat-icon>Dias feriados
+                </a>
+                <a class="font-white" mat-list-item routerLink="inicioSesion"> 
+                    <mat-icon class="icono">settings_power</mat-icon>Salir
+                </a>
+            </mat-nav-list>
+        </mat-sidenav>
+        <mat-sidenav-content>
+            <router-outlet></router-outlet>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>

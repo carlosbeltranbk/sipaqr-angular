@@ -1,0 +1,59 @@
+.back-verde {
+    background-color: aqua;
+}
+
+.border{
+    border: 1px solid #019979 !important;
+}
+
+#div2 {
+    background-color:rgba(0, 0, 0, 0.1);
+}
+/* 
+#prueba {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -ms-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    width: 80%;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    margin: auto;
+} */
+
+.paddings-div{
+    padding-top: 100px;
+    padding-bottom: 100px; 
+}
+
+.genqr{
+    font-size: x-small;
+    text-align: center;
+    margin-left: 95px;
+}
+
+.instrucciones{
+    font-size: medium;
+    color: rgba(71, 71, 71, 0.767);
+}
+
+.shadowins {
+	box-shadow: 0 .5rem 1rem rgba(0, 47, 150, 0.8) !important;
+}
+
+.margin-text{
+    margin-left: 40px;
+}
+
+.margin-qr{
+padding-right: 40px;
+}
+
+.font{
+    color: rgba(71, 71, 71, 0.767);
+
+}
